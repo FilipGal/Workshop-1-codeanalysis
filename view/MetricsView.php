@@ -1,15 +1,17 @@
 <?php
-require_once('modell/MetricsCalculations.php');
+require_once 'model/MetricsCalculations.php';
 
-class MetricsView {
+class MetricsView
+{
     private $mc;
-    
+
     /**
      * Constructor forward file to MetricsCalulations
      *
      * @param array $file
      */
-    public function __construct(array $file) {
+    public function __construct(array $file)
+    {
         $this->mc = new MetricsCalculations($file);
     }
 
@@ -18,11 +20,12 @@ class MetricsView {
      *
      * @return string
      */
-    public function getHtml() {
+    public function getHtml(): string
+    {
         return '
         <div>
-        Number of lines: '.$this->mc->numberOfLines().'
-        Max nested depth: '.$this->mc->getNestedDepth().'
+        Number of lines: ' . $this->mc->numberOfLines() . '
+        Max nested depth: ' . $this->mc->getNestedDepth() . '
         </div>';
     }
 }

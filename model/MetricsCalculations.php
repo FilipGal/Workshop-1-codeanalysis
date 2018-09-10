@@ -16,7 +16,7 @@ class MetricsCalculations {
      *
      * @return number
      */
-    public function numberOfLines() {
+    public function numberOfLines(): int {
         $numberOfLines = 0;
         foreach ($this->file as $line) {
             $numberOfLines++;
@@ -36,7 +36,8 @@ class MetricsCalculations {
     // If { is found NestedDepth should be +1
     // If } is found NestedDepth should be -1
     // If NestedDepth > maxNestedDepth change it
-    public function getNestedDepth() {
+
+    public function getNestedDepth(): int {
         $maxNestedDepth = 0;
         $nestedDepth = 0;
         foreach($this->file as $line) {
