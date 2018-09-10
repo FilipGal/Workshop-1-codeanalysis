@@ -12,6 +12,7 @@ class MetricsView {
         return '
         <div>
         Number of lines: '.$this->mc->numberOfLines().'
+        Max nested depth: '.$this->mc->getNestedDepth().'
         </div>';
     }
 }

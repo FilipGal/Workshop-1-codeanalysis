@@ -13,4 +13,38 @@ class MetricsCalculations {
         }
         return $numberOfLines;
     }
+    
+    // Example max nested depth is 2.
+    // {
+    //  { 
+    //    
+    //  }
+    // }
+
+    // This function do not work.
+    // Trying to get maxNestedDepth by running regexp on everyline.
+    // If { is found NestedDepth should be +1
+    // If } is found NestedDepth should be -1
+    // If NestedDepth > maxNestedDepth change it
+    public function getNestedDepth() {
+        $maxNestedDepth = 0;
+        $nestedDepth = 0;
+        foreach($this->file as $line) {
+            $rightBracketFound;
+            $leftBracketFound;
+            
+            preg_match('{', $line, $leftBracketFound);
+            preg_match('}', $line, $rightBracketFound);
+
+            if (is_array($leftBracketFound)) {
+                $nestedDepth += 1;
+                if ($nestedDepth > $maxNestedDepth) {
+                    $maxNestedDepth = $nestedDepth;
+                }
+            } else if (is_array($rightBracketFound)) {
+                $nestedDepth -= 1;
+            }
+        }
+        return $maxNestedDepth;
+    }
 }
