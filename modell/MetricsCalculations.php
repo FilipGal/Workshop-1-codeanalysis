@@ -2,10 +2,20 @@
 class MetricsCalculations {
     private $file;
 
+    /**
+     * Constructor
+     *
+     * @param array $file
+     */
     public function __construct(array $file) {
         $this->file = $file;
     }
     
+    /**
+     * Return number of lines in file uploaded.
+     *
+     * @return number
+     */
     public function numberOfLines() {
         $numberOfLines = 0;
         foreach ($this->file as $line) {
